@@ -53,5 +53,5 @@ _4. Raise the server, being at the root of the project_
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Gestor de base de datos NoSQL en la nube
 * [Mongoose](https://mongoosejs.com/) - ODM para modelar los datos
 
----
-⌨️ con ❤️ por [Nestor Cortina](https://github.com/nexckycort) 😊
+<!-----
+⌨️ con ❤️ por [Nestor Cortina](https://github.com/nexckycort) 😊-->
