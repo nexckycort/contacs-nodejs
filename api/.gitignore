@@ -1,0 +1,10 @@
+node_modules/
+package-lock.json
+.env
+.env.prod
+.env.dev
+prebuild
+build
+production
+logs/
+coverage/
