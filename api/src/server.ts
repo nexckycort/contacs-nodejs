@@ -1,12 +1,11 @@
-import http from 'http';
-import app from './config/express';
-import { nameAPI, port } from './config';
+import express, { Application, Request, Response } from 'express';
 
-app.set('port', port);
+import routesV1 from './routes/v1';
 
-const server = http.createServer(app);
+const app: Application = express();
 
-server.listen(port, () => {
-  console.log(`${nameAPI} running on port ${port}`);
+app.use('/', routesV1);
+
+app.listen(9000, () => {
+  console.log('server on running');
 })
-  .on('error', (e) => console.error(e));

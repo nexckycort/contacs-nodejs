@@ -1,13 +1,8 @@
-import express from 'express';
-import signup from './access/signup';
-import signin from './access/signin';
-import auth from '../../middleware/auth';
-import admin from './admin';
+import { Router } from "express";
+import contacts from './contacts';
 
-const router = express.Router();
+const router = Router();
 
-router.use('/signup', signup);
-router.use('/signin', signin);
-router.use('/admin', auth, admin);
+router.use('/', contacts);
 
 export default router;

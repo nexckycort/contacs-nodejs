@@ -1,20 +1,15 @@
 {
-  "name": "contacts",
+  "name": "contacts-new",
   "version": "1.0.0",
-  "author": "Nestor Cortina",
   "description": "",
-  "main": "server.js",
-  "engines": {
-    "node": ">=12.19.0",
-    "npm": ">=6.14.8",
-    "typescript": ">=4.0.3"
-  },
+  "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "prebuild": "tsc",
     "build": "npm run prebuild && webpack --mode production --config webpack.config.js && cp package.json build && rm -rf prebuild"
   },
   "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
