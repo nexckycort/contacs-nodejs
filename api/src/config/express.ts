@@ -1,6 +1,4 @@
 import express, { Request, Response, NextFunction, Application } from 'express';
-import compression from 'compression';
-import helmet from 'helmet';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
@@ -12,8 +10,6 @@ import db from '../database/mongo';
 const app: Application = express();
 
 app.use(cors());
-app.use(helmet());
-app.use(compression());
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));

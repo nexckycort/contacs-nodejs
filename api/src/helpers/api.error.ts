@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { ResponseStatus } from '../interfaces/ApiResponse';
-import { StatusCode } from '../interfaces/ApiResponse';
+import { ResponseStatus } from '../interfaces/api.response';
+import { StatusCode } from '../interfaces/api.response';
 
 enum ErrorMessage {
   UNAUTHORIZED = 'Authentication failure',
