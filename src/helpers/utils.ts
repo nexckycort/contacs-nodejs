@@ -1,5 +1,5 @@
 export default {
-  pick: (object: Object, propiedades: any[]) => {
-    return JSON.parse(JSON.stringify(object, propiedades));
+  pick: <T>(object: unknown, propiedades: string[]): T => {
+    return JSON.parse(JSON.stringify(object, propiedades)) as T;
   }
 };
