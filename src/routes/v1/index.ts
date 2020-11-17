@@ -1,8 +1,9 @@
 import { Router } from "express";
-import contacts from './contacts';
+import admin from './admin';
+import auth from '../../middleware/auth'
 
 const router = Router();
 
-router.use('/', contacts);
+router.use('/admin', auth, admin);
 
 export default router;
