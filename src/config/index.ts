@@ -10,7 +10,7 @@ if (envFound.error) {
 export default {
   nameAPI: process.env.NAME_API,
   port: process.env.PORT || 9000,
-  databaseURL: process.env.MONGODB_URI,
+  databaseURL: process.env.MONGODB_URI || '',
   jwtSecret: process.env.JWT_SECRET || '',
   api: {
     prefix: '/v1',
