@@ -1,14 +1,7 @@
-import express, { Application, Request, Response } from 'express';
-import morgan from 'morgan';
+import server from './loaders/express';
+import config from './config'
 
-import routesV1 from './routes/v1';
-
-const app: Application = express();
-
-app.use(morgan('dev'));
-
-app.use('/', routesV1);
-
-app.listen(9000, () => {
-  console.log('server on running');
+server.listen(config.port, () => {
+  console.log(`${config.nameAPI} running on port ${config.port}`);
 })
+  .on('error', (e) => console.error(e));
