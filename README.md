@@ -42,12 +42,7 @@ npm install
 _4. Raise the server, being at the root of the project_
 
 `npm run dev` for a development environment
+
 `npm run build` prepare the project for a production environment
+
 `npm start` para un entorno de producción
-
-## Construido con 🛠️
-
-* [NodeJS](https://nodejs.org/) - Backend de la aplicación
-* [express](https://expressjs.com/) - Configuración del servidor
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Gestor de base de datos NoSQL en la nube
-* [Mongoose](https://mongoosejs.com/) - ODM para modelar los datos
