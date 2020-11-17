@@ -9,10 +9,7 @@ mongoose.connect(config.databaseURL, {
   useFindAndModify: false
 });
 
-db.on('error', (error: Error) => {
-  console.log('connection error: ', error);
-});
-
+db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('The connection to MongoDB was successful!');
 });

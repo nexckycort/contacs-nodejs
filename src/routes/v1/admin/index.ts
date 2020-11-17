@@ -1,5 +1,5 @@
 import { Router } from "express";
-import contacts from '../contacts';
+import contacts from './contacts';
 
 const router = Router();
 

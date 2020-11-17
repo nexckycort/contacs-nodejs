@@ -6,6 +6,7 @@ import http from 'http';
 import routesV1 from '../routes/v1';
 import { NotFoundError } from '../helpers/api.error';
 import config from '../config';
+import db from './mongoose';
 
 const app: Application = express();
 
@@ -22,5 +23,7 @@ app.use((_req: Request, res: Response, next: NextFunction) => next(NotFoundError
 app.set('port', config.port);
 
 const server = http.createServer(app);
+
+db.once('open', () => { });
 
 export default server;

@@ -12,7 +12,7 @@
 │   ├───models         # Database models
 │   ├───routes         # Express route controllers for all the endpoints of the app
 │   ├───services       # All the business logic is here
-│   └───types          # Type declaration files (d.ts) for Typescript
+│   └───types          # Type declaration files for Typescript
 ├───tsconfig.json      # TypeScript setup
 └───webpack.config.js  # Webpack setup
 ```
