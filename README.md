@@ -18,6 +18,7 @@
 ```
 
 ## Layer architecture
+![layer architecture](https://user-images.githubusercontent.com/50475272/99424149-5be4e180-28cf-11eb-9ca0-a3a1e085e8d5.png)
 
 ### Pre-requirements 📋
 
