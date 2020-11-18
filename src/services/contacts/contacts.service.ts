@@ -53,4 +53,14 @@ export class ContactsService {
       throw e;
     }
   }
+
+  static async delete(id: string): Promise<IContact | null> {
+    try {
+      const data = await Contacts.findOneAndDelete({ _id: id });
+      return data;
+    } catch (e) {
+      handleError(e);
+      throw e;
+    }
+  }
 }

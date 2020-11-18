@@ -81,4 +81,20 @@ router.put('/:id', validator(schema.getGroup, ValidationSource.PARAM), validator
   }
 });
 
+router.delete('/:id', validator(schema.getGroup, ValidationSource.PARAM), async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const contacts = await ContactsService.delete(id);
+
+    if (!contacts) {
+      return BadRequestError('Contact does not exist', res);
+    }
+
+    return SuccessResponse(res, 'Contact deleted successfully', _.pick(contacts, ['_id', 'name', 'email', 'cellphone']));
+  } catch (error) {
+    console.log(error);
+    return InternalError(res);
+  }
+});
+
 export default router;
