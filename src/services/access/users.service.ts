@@ -40,7 +40,7 @@ export default class UsersService {
     }
   }
 
-  static signToken(data: any): string {
+  static signToken(data: Record<string, unknown>): string {
     return jwt.sign(data, config.jwtSecret, { expiresIn: '24h' });
   }
 

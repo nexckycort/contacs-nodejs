@@ -1,6 +1,7 @@
 import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
 import { BadRequestError } from '../helpers/api.error';
+import { Types } from 'mongoose';
 
 export enum ValidationSource {
   BODY = 'body',
@@ -8,6 +9,12 @@ export enum ValidationSource {
   PARAM = 'params',
 }
 
+export const JoiObjectId = () =>
+  Joi.string().custom((value: string, helpers) => {
+    if (!Types.ObjectId.isValid(value)) return helpers.error('any.invalid');
+    return value;
+  }, 'Object Id Validation');
+  
 export const JoiAuthBearer = () =>
   Joi.string().custom((value: string, helpers) => {
     if (!value.startsWith('Bearer ')) return helpers.error('any.invalid');
