@@ -31,3 +31,7 @@ const responseError = (status: number, message: string, res: Response): Response
     message
   });
 };
+
+export const handleError = (e: Error): void => {
+  console.log(e);
+}

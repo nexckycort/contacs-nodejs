@@ -4,8 +4,7 @@ import bcrypt from 'bcrypt';
 import Users from '../../models/users';
 import config from '../../config';
 import { IUser } from '../../types/access';
-
-
+import { handleError } from '../../helpers/api.error';
 export default class UsersService {
   static async create(user: IUser): Promise<IUser> {
     const passwordHash = await bcrypt.hash(user.password, 10);
@@ -15,8 +14,9 @@ export default class UsersService {
       .then((data: IUser) => {
         return data;
       })
-      .catch((error: Error) => {
-        throw error;
+      .catch((e: Error) => {
+        handleError(e);
+        throw e;
       });
   }
 
@@ -24,12 +24,23 @@ export default class UsersService {
     try {
       const data = await Users.findOne({ email });
       return data;
-    } catch (error) {
-      throw error;
+    } catch (e) {
+      handleError(e);
+      throw e;
     }
   }
 
-  static signToken(data: any) {
+  static async comparePassword(confirmPassword: string, password: string): Promise<boolean> {
+    try {
+      const data = await bcrypt.compare(confirmPassword, password);
+      return data;
+    } catch (e) {
+      handleError(e);
+      throw e;
+    }
+  }
+
+  static signToken(data: any): string {
     return jwt.sign(data, config.jwtSecret, { expiresIn: '24h' });
   }
 
