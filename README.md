@@ -28,13 +28,13 @@ _Have installed NodeJS y npm_
 
 [npm](https://www.npmjs.com/)
 
-### Instalación 🔧
+### Instalationn 🔧
 
 _1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create an account to have a noSQL database in the cloud for free_
 
 _2. Create a file ``.env`` as it is shown in ``.env.example``_
 
-_3. Rebuild Node modules, We do it by executing the following command while at the root of the project_
+_3. Rebuild Node modules, you can do it by executing the following command being at the project root_
 
 ```install
 npm install
@@ -47,3 +47,10 @@ _4. Raise the server, being at the root of the project_
 `npm run build` prepare the project for a production environment
 
 `npm start` for a production environment
+
+## Built with 🛠️
+
+* [NodeJS](https://nodejs.org/) - App backend 
+* [express](https://expressjs.com/) - Server configuration
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - NoSQL cloud database manager 
+* [Mongoose](https://mongoosejs.com/) - ODM for data modeling
