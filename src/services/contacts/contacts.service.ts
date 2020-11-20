@@ -1,10 +1,18 @@
 import Contacts from '../.././models/contacts';
-import { IContact } from '../../types/access';
+import { IContact, ICreateContact } from '../../types/access';
 import { handleError } from '../../helpers/api.error';
-import { Types } from 'mongoose';
 
 export class ContactsService {
-  static async create(contact: IContact): Promise<IContact> {
+  static async create(createContact: ICreateContact): Promise<IContact> {
+    const { name, email, cellphone, session: { id } } = createContact;
+
+    const contact: IContact = {
+      name,
+      email,
+      cellphone,
+      user: id
+    };
+
     return Contacts.create(contact)
       .then((data: IContact) => {
         return data;
@@ -14,9 +22,9 @@ export class ContactsService {
       });
   }
 
-  static async findByCellPhone(cellphone: string): Promise<IContact | null> {
+  static async findByCellPhone(user: string, cellphone: string): Promise<IContact | null> {
     try {
-      const data = await Contacts.findOne({ cellphone });
+      const data = await Contacts.findOne({ user, cellphone });
       return data;
     } catch (e) {
       handleError(e);
@@ -24,9 +32,9 @@ export class ContactsService {
     }
   }
 
-  static async find(): Promise<IContact[]> {
+  static async find(id: string): Promise<IContact[]> {
     try {
-      const data = await Contacts.find();
+      const data = await Contacts.find({ user: id });
       return data;
     } catch (e) {
       handleError(e);
@@ -34,9 +42,9 @@ export class ContactsService {
     }
   }
 
-  static async findByPk(id: string): Promise<IContact | null> {
+  static async findByPk(user: string, id: string): Promise<IContact | null> {
     try {
-      const data = await Contacts.findById(id);
+      const data = await Contacts.findOne({ user, _id: id });
       return data;
     } catch (e) {
       handleError(e);
@@ -44,9 +52,17 @@ export class ContactsService {
     }
   }
 
-  static async update(id: string, contact: IContact): Promise<IContact | null> {
+  static async update(contactId: string, createContact: ICreateContact): Promise<IContact | null> {
     try {
-      const data = await Contacts.findByIdAndUpdate({ _id: id }, contact);
+      const { name, email, cellphone, session: { id } } = createContact;
+
+      const contact = {
+        name,
+        email,
+        cellphone
+      };
+
+      const data = await Contacts.findByIdAndUpdate({ _id: contactId, user: id }, contact);
       return data;
     } catch (e) {
       handleError(e);
@@ -54,9 +70,9 @@ export class ContactsService {
     }
   }
 
-  static async delete(id: string): Promise<IContact | null> {
+  static async delete(user: string, contactId: string): Promise<IContact | null> {
     try {
-      const data = await Contacts.findOneAndDelete({ _id: id });
+      const data = await Contacts.findOneAndDelete({ _id: contactId, user });
       return data;
     } catch (e) {
       handleError(e);

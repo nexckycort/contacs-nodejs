@@ -1,10 +1,14 @@
 import mongoose, { Schema } from 'mongoose';
-import { IContact } from '../types/access';
+import { IContactModel } from '../types/access';
 
 const ContactsSchema = new Schema({
   email: String,
   name: String,
-  cellphone: String
+  cellphone: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
+  }
 });
 
-export default mongoose.model<IContact>('contacts', ContactsSchema);
+export default mongoose.model<IContactModel>('contacts', ContactsSchema);

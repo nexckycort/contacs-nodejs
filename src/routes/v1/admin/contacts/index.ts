@@ -11,8 +11,8 @@ const router = Router();
 
 const validateGroup: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { cellphone } = req.body;
-    const result = await ContactsService.findByCellPhone(cellphone);
+    const { cellphone, session: { id } } = req.body;
+    const result = await ContactsService.findByCellPhone(id, cellphone);
 
     if (result) {
       return BadRequestError('Contact already registered', res);
@@ -40,7 +40,8 @@ router.post('/', validator(schema.group), validateGroup, async (req: Request, re
 
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const contacts = await ContactsService.find();
+    const { session: { id } } = req.body;
+    const contacts = await ContactsService.find(id);
 
     return SuccessResponse(res, 'Contacts obtained successfully', _.pick(contacts, ['_id', 'name', 'email', 'cellphone']));
   } catch (error) {
@@ -51,8 +52,9 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.get('/:id', validator(schema.getGroup, ValidationSource.PARAM), async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
-    const contacts = await ContactsService.findByPk(id);
+    const { session: { id } } = req.body;
+    const contactId = req.params.id;
+    const contacts = await ContactsService.findByPk(id, contactId);
 
     if (!contacts) {
       return BadRequestError('Contact does not exist', res);
@@ -67,10 +69,10 @@ router.get('/:id', validator(schema.getGroup, ValidationSource.PARAM), async (re
 
 router.put('/:id', validator(schema.getGroup, ValidationSource.PARAM), validator(schema.group), async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const contactId = req.params.id;
     const data = req.body;
 
-    const contact = await ContactsService.update(id, data);
+    const contact = await ContactsService.update(contactId, data);
 
     SuccessResponse(res, 'Contact updated successfully', {
       contact: _.pick(contact, ['_id', 'name', 'email', 'cellphone'])
@@ -83,8 +85,9 @@ router.put('/:id', validator(schema.getGroup, ValidationSource.PARAM), validator
 
 router.delete('/:id', validator(schema.getGroup, ValidationSource.PARAM), async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
-    const contacts = await ContactsService.delete(id);
+    const { session: { id } } = req.body;
+    const contactId = req.params.id;
+    const contacts = await ContactsService.delete(id, contactId);
 
     if (!contacts) {
       return BadRequestError('Contact does not exist', res);
