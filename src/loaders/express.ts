@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction, Application } from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import http from 'http';
+import cors from 'cors';
 
 import routesV1 from '../routes/v1';
 import { NotFoundError } from '../helpers/api.error';
@@ -13,6 +14,7 @@ const app: Application = express();
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+app.use(cors());
 app.use(morgan('dev'));
 
 app.use(config.api.prefix, routesV1);
@@ -24,6 +26,7 @@ app.set('port', config.port);
 
 const server = http.createServer(app);
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 db.once('open', () => { });
 
 export default server;
