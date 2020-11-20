@@ -30,11 +30,11 @@ _Have installed NodeJS y npm_
 
 ### Instalación 🔧
 
-_1. Ir a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) y crear una cuenta para tener una base de datos noSQL en la nube de forma gratutita_
+_1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create an account to have a noSQL database in the cloud for free_
 
-_2. Crear un archivo ``.env`` como se muestra en ``.env.example``_
+_2. Create a file ``.env`` as it is shown in ``.env.example``_
 
-_3. Reconstruir los modulos de Node, lo hacemos ejecuando el siguiente comando estando en la raiz del proyecto_
+_3. Rebuild Node modules, We do it by executing the following command while at the root of the project_
 
 ```install
 npm install
@@ -46,4 +46,4 @@ _4. Raise the server, being at the root of the project_
 
 `npm run build` prepare the project for a production environment
 
-`npm start` para un entorno de producción
+`npm start` for a production environment
