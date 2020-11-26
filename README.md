@@ -47,10 +47,3 @@ _4. Raise the server, being at the root of the project_
 `npm run build` prepare the project for a production environment
 
 `npm start` for a production environment
-
-## Built with 🛠️
-
-* [NodeJS](https://nodejs.org/) - App backend 
-* [express](https://expressjs.com/) - Server configuration
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - NoSQL cloud database manager 
-* [Mongoose](https://mongoosejs.com/) - ODM for data modeling
