@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IUser } from '../types/access';
+import { IUser } from '../interfaces/access';
 
 const UsersSchema = new Schema({
   email: String,

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IContactModel } from '../types/access';
+import { IContactModel } from '../interfaces/access';
 
 const ContactsSchema = new Schema({
   email: String,

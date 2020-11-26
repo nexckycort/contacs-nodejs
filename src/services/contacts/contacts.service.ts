@@ -1,5 +1,5 @@
 import Contacts from '../.././models/contacts';
-import { IContact, ICreateContact } from '../../types/access';
+import { IContact, ICreateContact } from '../../interfaces/access';
 import { handleError } from '../../helpers/api.error';
 
 export class ContactsService {

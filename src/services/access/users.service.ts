@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 import Users from '../../models/users';
 import config from '../../config';
-import { IUser } from '../../types/access';
+import { IUser } from '../../interfaces/access';
 import { handleError } from '../../helpers/api.error';
 export default class UsersService {
   static async create(user: IUser): Promise<IUser> {
